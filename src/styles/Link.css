@@ -1,0 +1,121 @@
+.link-page {
+    min-height: 100vh;
+    background-color: var(--navy);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Fix for red outline */
+.link-page .MuiAppBar-root {
+    outline: none !important;
+    border: none !important;
+}
+
+/* Brute force targeting navbar elements */
+.link-page .MuiToolbar-root a {
+    color: #64ffda !important;
+}
+
+.link-page .MuiToolbar-root .MuiBox-root a {
+    color: var(--lightest-slate) !important;
+}
+
+.link-page .MuiToolbar-root .MuiBox-root a:hover {
+    color: #64ffda !important;
+}
+
+.link-page .MuiToolbar-root .MuiBox-root a span {
+    color: #64ffda !important;
+}
+
+.link-page .MuiToolbar-root button {
+    color: #64ffda !important;
+    border-color: #64ffda !important;
+}
+
+#link {
+    margin: 0 auto;
+    padding-top: 80px;
+    padding-bottom: 60px;
+    max-width: 1200px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Additional styling for the link items - more specific selectors */
+.link-page #link .MuiLink-root {
+    border-radius: 2px !important;
+    justify-content: center !important;
+    min-width: 220px !important;
+}
+
+.link-page #link .MuiTypography-root {
+    text-align: center !important;
+    white-space: nowrap !important;
+}
+
+.link-page #link .MuiBox-root>div>div {
+    margin-bottom: 24px !important;
+}
+
+.section-header {
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.section-title {
+    font-family: "NTR", sans-serif;
+    color: var(--lightest-slate);
+    font-size: 42px;
+    font-weight: bold;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    display: inline-block;
+    width: 300px;
+    height: 1px;
+    background-color: #64ffda;
+    margin-left: 20px;
+    opacity: 0.5;
+    vertical-align: middle;
+    position: relative;
+    top: -3px;
+}
+
+@media only screen and (max-width: 768px) {
+    #link {
+        height: unset;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .section-title {
+        margin-left: 0;
+    }
+
+    .section-title::after {
+        width: 100px;
+    }
+
+    /* Mobile view should be single column */
+    .link-page #link .MuiLink-root {
+        width: calc(100% - 20px) !important;
+        margin: 10px !important;
+    }
+
+    /* Hide vertical divider on mobile */
+    .link-page .verticalDivider {
+        display: none;
+    }
+}
+
+/* Add styles to reset link color states */
+a.MuiButtonBase-root:visited,
+a.MuiButtonBase-root.MuiButton-root:visited {
+    color: #64ffda !important;
+    border-color: #64ffda !important;
+}
