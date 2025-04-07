@@ -69,5 +69,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-Samonide - [emamulmontachirsajid@gmail.com](mailto:emamulmontachirsajid@gmail.com)
+Samonide - [samonide@fmb.im](mailto:samonide@fmb.im)
+
 Project Link: [https://github.com/samonide/portfolio](https://github.com/samonide/portfolio)
