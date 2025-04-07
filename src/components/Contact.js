@@ -31,13 +31,16 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '16px',
         color: '#64ffda !important',
         borderColor: '#64ffda !important',
+        textTransform: 'none !important',
         '&:visited': {
             color: '#64ffda !important',
             borderColor: '#64ffda !important',
+            textTransform: 'none !important',
         },
         '&:hover': {
             backgroundColor: 'rgba(100, 255, 218, 0.1)',
             color: '#64ffda !important',
+            textTransform: 'none !important',
         },
     },
     emailLink: {
@@ -79,8 +82,9 @@ const Contact = () => {
                     color="secondary"
                     size="large"
                     className={classes.contactButton}
+                    style={{ textTransform: 'none' }}
                 >
-                    Link
+                    Bio Link
                 </Button>
             </div>
         </section>

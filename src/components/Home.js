@@ -54,9 +54,13 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '16px',
         fontWeight: 500,
         transition: 'all 0.3s ease',
+        color: '#64ffda !important',
+        borderColor: '#64ffda !important',
+        textTransform: 'none !important',
         '&:hover': {
             transform: 'translateY(-3px)',
             boxShadow: '0 5px 15px rgba(0, 0, 0, 0.3)',
+            backgroundColor: 'rgba(100, 255, 218, 0.1) !important',
         },
         [theme.breakpoints.down('sm')]: {
             padding: '12px 20px',
@@ -130,6 +134,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'transparent',
         border: `2px solid ${theme.palette.secondary.main}`,
         boxShadow: '0 0 20px rgba(100, 255, 218, 0.1)',
+        transition: 'all 0.3s ease',
+        '&:hover': {
+            boxShadow: '0 0 30px rgba(100, 255, 218, 0.2)',
+        },
     },
     minimalistCircle: {
         position: 'absolute',
@@ -142,6 +150,13 @@ const useStyles = makeStyles((theme) => ({
         transform: 'translate(-50%, -50%)',
         animation: '$rotate 18s linear infinite',
         opacity: 0.85,
+        transition: 'all 0.5s ease',
+        '$minimalistFrame:hover &': {
+            animation: '$rotate 8s linear infinite',
+            width: '100px',
+            height: '100px',
+            opacity: 1,
+        },
     },
     innerCircle: {
         position: 'absolute',
@@ -154,6 +169,13 @@ const useStyles = makeStyles((theme) => ({
         transform: 'translate(-50%, -50%)',
         animation: '$rotateReverse 12s linear infinite',
         opacity: 0.6,
+        transition: 'all 0.5s ease',
+        '$minimalistFrame:hover &': {
+            animation: '$rotateReverse 6s linear infinite',
+            width: '50px',
+            height: '50px',
+            opacity: 0.85,
+        },
     },
     minimalistDot: {
         position: 'absolute',
@@ -162,6 +184,11 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
         borderRadius: '50%',
         animation: '$pulse 4s ease-in-out infinite',
+        transition: 'all 0.5s ease',
+        '$minimalistFrame:hover &': {
+            animation: '$pulse 2.5s ease-in-out infinite',
+            backgroundColor: theme.palette.secondary.light,
+        },
     },
     smallDot: {
         position: 'absolute',
@@ -170,6 +197,11 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
         borderRadius: '50%',
         opacity: 0.7,
+        transition: 'all 0.5s ease',
+        '$minimalistFrame:hover &': {
+            opacity: 1,
+            transform: 'scale(1.3)',
+        },
     },
     minimalistLine: {
         position: 'absolute',
@@ -178,6 +210,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
         opacity: 0.5,
         transition: 'all 0.5s ease',
+        '$minimalistFrame:hover &': {
+            width: '60px',
+            opacity: 0.7,
+        },
     },
     '@keyframes rotate': {
         '0%': {
@@ -286,6 +322,11 @@ const Home = () => {
                                 color="secondary"
                                 size="large"
                                 className={`btn-primary ${classes.ctaButton}`}
+                                style={{ 
+                                    color: '#64ffda', 
+                                    borderColor: '#64ffda',
+                                    textTransform: 'none'
+                                }}
                             >
                                 Get In Touch <Email className={classes.buttonIcon} fontSize="small" />
                             </Button>

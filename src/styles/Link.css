@@ -11,7 +11,7 @@
     border: none !important;
 }
 
-/* Brute force targeting navbar elements */
+/* Specific targeting for link page navbar elements */
 .link-page .MuiToolbar-root a {
     color: #64ffda !important;
 }
@@ -28,6 +28,8 @@
     color: #64ffda !important;
 }
 
+/* Only target buttons within the link page */
+.link-page #link button,
 .link-page .MuiToolbar-root button {
     color: #64ffda !important;
     border-color: #64ffda !important;
