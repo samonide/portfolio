@@ -134,9 +134,12 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'transparent',
         border: `2px solid ${theme.palette.secondary.main}`,
         boxShadow: '0 0 20px rgba(100, 255, 218, 0.1)',
-        transition: 'all 0.3s ease',
+        transition: 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+        animation: '$subtle-rotate 15s linear infinite',
         '&:hover': {
-            boxShadow: '0 0 30px rgba(100, 255, 218, 0.2)',
+            boxShadow: '0 0 30px rgba(100, 255, 218, 0.3)',
+            transform: 'scale(1.05) rotate(2deg)',
+            border: `2px solid ${theme.palette.secondary.light}`,
         },
     },
     minimalistCircle: {
@@ -148,11 +151,11 @@ const useStyles = makeStyles((theme) => ({
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        animation: '$rotate 18s linear infinite',
+        animation: '$bounceAndRotate 8s ease-in-out infinite',
         opacity: 0.85,
         transition: 'all 0.5s ease',
         '$minimalistFrame:hover &': {
-            animation: '$rotate 8s linear infinite',
+            animation: '$bounceAndRotate 4s ease-in-out infinite',
             width: '100px',
             height: '100px',
             opacity: 1,
@@ -167,11 +170,11 @@ const useStyles = makeStyles((theme) => ({
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        animation: '$rotateReverse 12s linear infinite',
+        animation: '$floatAndSpin 6s ease-in-out infinite',
         opacity: 0.6,
         transition: 'all 0.5s ease',
         '$minimalistFrame:hover &': {
-            animation: '$rotateReverse 6s linear infinite',
+            animation: '$floatAndSpin 3s ease-in-out infinite',
             width: '50px',
             height: '50px',
             opacity: 0.85,
@@ -183,10 +186,10 @@ const useStyles = makeStyles((theme) => ({
         height: '6px',
         backgroundColor: theme.palette.secondary.main,
         borderRadius: '50%',
-        animation: '$pulse 4s ease-in-out infinite',
+        animation: '$pulseAndMove 5s ease-in-out infinite',
         transition: 'all 0.5s ease',
         '$minimalistFrame:hover &': {
-            animation: '$pulse 2.5s ease-in-out infinite',
+            animation: '$pulseAndMove 2.5s ease-in-out infinite',
             backgroundColor: theme.palette.secondary.light,
         },
     },
@@ -198,9 +201,11 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '50%',
         opacity: 0.7,
         transition: 'all 0.5s ease',
+        animation: '$float 7s ease-in-out infinite alternate',
         '$minimalistFrame:hover &': {
             opacity: 1,
             transform: 'scale(1.3)',
+            animation: '$float 3.5s ease-in-out infinite alternate',
         },
     },
     minimalistLine: {
@@ -210,62 +215,84 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
         opacity: 0.5,
         transition: 'all 0.5s ease',
+        animation: '$stretch 8s ease-in-out infinite alternate',
         '$minimalistFrame:hover &': {
             width: '60px',
             opacity: 0.7,
+            animation: '$stretch 4s ease-in-out infinite alternate',
         },
     },
-    '@keyframes rotate': {
+    '@keyframes bounceAndRotate': {
         '0%': {
-            transform: 'translate(-50%, -50%) rotate(0deg)',
+            transform: 'translate(-50%, -50%) rotate(0deg) scale(0.9)',
         },
-        '100%': {
-            transform: 'translate(-50%, -50%) rotate(360deg)',
-        },
-    },
-    '@keyframes rotateReverse': {
-        '0%': {
-            transform: 'translate(-50%, -50%) rotate(0deg)',
-        },
-        '100%': {
-            transform: 'translate(-50%, -50%) rotate(-360deg)',
-        },
-    },
-    '@keyframes pulse': {
-        '0%': {
-            transform: 'scale(1)',
-            opacity: 0.7,
+        '25%': {
+            transform: 'translate(-48%, -52%) rotate(90deg) scale(1.1)',
         },
         '50%': {
-            transform: 'scale(1.5)',
+            transform: 'translate(-50%, -48%) rotate(180deg) scale(0.9)',
+        },
+        '75%': {
+            transform: 'translate(-52%, -50%) rotate(270deg) scale(1.1)',
+        },
+        '100%': {
+            transform: 'translate(-50%, -50%) rotate(360deg) scale(0.9)',
+        },
+    },
+    '@keyframes floatAndSpin': {
+        '0%': {
+            transform: 'translate(-50%, -50%) rotate(0deg) translateX(0px)',
+        },
+        '25%': {
+            transform: 'translate(-45%, -55%) rotate(90deg) translateX(5px)',
+        },
+        '50%': {
+            transform: 'translate(-50%, -45%) rotate(180deg) translateX(0px)',
+        },
+        '75%': {
+            transform: 'translate(-55%, -50%) rotate(270deg) translateX(5px)',
+        },
+        '100%': {
+            transform: 'translate(-50%, -50%) rotate(360deg) translateX(0px)',
+        },
+    },
+    '@keyframes pulseAndMove': {
+        '0%': {
+            transform: 'scale(1) translateX(0) translateY(0)',
+            opacity: 0.7,
+            boxShadow: '0 0 5px rgba(100, 255, 218, 0.3)',
+        },
+        '25%': {
+            transform: 'scale(1.3) translateX(10px) translateY(-5px)',
             opacity: 1,
-        },
-        '100%': {
-            transform: 'scale(1)',
-            opacity: 0.7,
-        },
-    },
-    '@keyframes bounce': {
-        '0%': {
-            transform: 'translateY(0)',
+            boxShadow: '0 0 8px rgba(100, 255, 218, 0.7)',
         },
         '50%': {
-            transform: 'translateY(-8px)',
+            transform: 'scale(1) translateX(0) translateY(-10px)',
+            opacity: 0.7,
+            boxShadow: '0 0 5px rgba(100, 255, 218, 0.3)',
+        },
+        '75%': {
+            transform: 'scale(1.3) translateX(-10px) translateY(-5px)',
+            opacity: 1,
+            boxShadow: '0 0 8px rgba(100, 255, 218, 0.7)',
         },
         '100%': {
-            transform: 'translateY(0)',
+            transform: 'scale(1) translateX(0) translateY(0)',
+            opacity: 0.7,
+            boxShadow: '0 0 5px rgba(100, 255, 218, 0.3)',
         },
     },
     cursorBlink: {
         display: 'inline-block',
         width: '3px',
-        height: '56px',
+        height: '44px',
         backgroundColor: theme.palette.secondary.main,
         marginLeft: '5px',
         verticalAlign: 'middle',
         animation: '$blink 1s step-end infinite',
         [theme.breakpoints.down('sm')]: {
-            height: '36px',
+            height: '30px',
         },
     },
     '@keyframes blink': {
@@ -277,6 +304,58 @@ const useStyles = makeStyles((theme) => ({
         },
         '100%': {
             opacity: 1,
+        },
+    },
+    '@keyframes float': {
+        '0%': {
+            transform: 'translateY(0) translateX(0)',
+        },
+        '25%': {
+            transform: 'translateY(-10px) translateX(5px)',
+        },
+        '50%': {
+            transform: 'translateY(5px) translateX(-5px)',
+        },
+        '75%': {
+            transform: 'translateY(-5px) translateX(10px)',
+        },
+        '100%': {
+            transform: 'translateY(0) translateX(0)',
+        },
+    },
+    '@keyframes stretch': {
+        '0%': {
+            width: '30px',
+            transform: 'rotate(0deg)',
+        },
+        '33%': {
+            width: '70px',
+            transform: 'rotate(5deg)',
+        },
+        '66%': {
+            width: '40px',
+            transform: 'rotate(-5deg)',
+        },
+        '100%': {
+            width: '60px',
+            transform: 'rotate(0deg)',
+        },
+    },
+    '@keyframes subtle-rotate': {
+        '0%': {
+            transform: 'rotate(0deg)',
+        },
+        '25%': {
+            transform: 'rotate(1deg)',
+        },
+        '50%': {
+            transform: 'rotate(0deg)',
+        },
+        '75%': {
+            transform: 'rotate(-1deg)',
+        },
+        '100%': {
+            transform: 'rotate(0deg)',
         },
     },
 }));
@@ -322,8 +401,8 @@ const Home = () => {
                                 color="secondary"
                                 size="large"
                                 className={`btn-primary ${classes.ctaButton}`}
-                                style={{ 
-                                    color: '#64ffda', 
+                                style={{
+                                    color: '#64ffda',
                                     borderColor: '#64ffda',
                                     textTransform: 'none'
                                 }}

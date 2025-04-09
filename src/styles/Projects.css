@@ -126,7 +126,7 @@
     max-width: 1200px;
     margin: 0 auto 60px auto;
     position: relative;
-    width: 100%;
+    width: 80%;
 }
 
 .carousel-slide {
@@ -186,7 +186,7 @@
 }
 
 .carousel-caption h3 {
-    font-size: 46px;
+    font-size: 40px;
     font-weight: bold;
     color: var(--lightest-slate);
     margin-bottom: 20px;
@@ -196,7 +196,7 @@
 .carousel-caption p {
     font-family: "NTR", sans-serif;
     font-weight: normal;
-    font-size: 19px;
+    font-size: 16px;
     color: var(--lightest-slate);
     margin-bottom: 15px;
     line-height: 1.7;
@@ -205,8 +205,8 @@
 }
 
 .carousel-caption p.tech-stack {
-    font-family: "NTR", sans-serif;
-    font-size: 14px;
+    font-family: "Playfair Display", "Georgia", serif;
+    font-size: 12px;
     font-weight: bold;
     color: var(--green-bright);
     margin-top: 15px;

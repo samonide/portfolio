@@ -70,7 +70,7 @@ const Projects = () => {
     return (
         <section id="projects">
             <div className="section-header">
-                <span className="section-title">/ pet projects</span>
+                <span className="section-title"><span>/</span> pet projects</span>
             </div>
 
             {/* Featured Projects Carousel */}

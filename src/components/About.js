@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
         color: theme.palette.text.secondary,
-        fontSize: '16px',
+        fontSize: '18px',
         lineHeight: 1.6,
         marginBottom: theme.spacing(3),
     },
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     },
     skillsHeading: {
         color: theme.palette.text.primary,
-        fontSize: '16px',
+        fontSize: '18px',
         marginBottom: theme.spacing(2),
         fontWeight: 500,
     },
@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     skillText: {
-        fontSize: '14px',
+        fontSize: '16px',
     },
 }));
 
@@ -88,7 +88,7 @@ const About = () => {
         <section id="about" className={classes.aboutSection}>
             <Container>
                 <div className="section-header">
-                    <span className="section-title">/ about me</span>
+                    <span className="section-title"><span>/</span> about me</span>
                 </div>
 
                 <Grid container spacing={4}>

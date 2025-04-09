@@ -33,8 +33,44 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '14px',
         minWidth: '180px',
         color: theme.palette.text.secondary,
+        position: 'relative',
+        transition: 'all 0.3s ease',
         '&.Mui-selected': {
             color: theme.palette.secondary.main,
+        },
+        '&::after': {
+            content: '""',
+            position: 'absolute',
+            width: '2px',
+            height: '0',
+            right: '0',
+            top: '50%',
+            backgroundColor: theme.palette.secondary.main,
+            transform: 'translateY(-50%)',
+            transition: 'height 0.3s ease-in-out',
+            [theme.breakpoints.down('sm')]: {
+                width: '0',
+                height: '2px',
+                bottom: '0',
+                right: '50%',
+                top: 'auto',
+                transform: 'translateX(50%)',
+                transition: 'width 0.3s ease-in-out',
+            },
+        },
+        '&:hover::after': {
+            height: '40%',
+            [theme.breakpoints.down('sm')]: {
+                width: '40%',
+                height: '2px',
+            },
+        },
+        '&.Mui-selected::after': {
+            height: '70%',
+            [theme.breakpoints.down('sm')]: {
+                width: '70%',
+                height: '2px',
+            },
         },
     },
     tabContent: {
@@ -48,9 +84,23 @@ const useStyles = makeStyles((theme) => ({
             padding: theme.spacing(2),
         },
     },
+    fadeIn: {
+        animation: '$fadeIn 0.5s ease forwards',
+    },
+    '@keyframes fadeIn': {
+        '0%': {
+            opacity: 0,
+            transform: 'translateY(20px)',
+        },
+        '100%': {
+            opacity: 1,
+            transform: 'translateY(0)',
+        },
+    },
     role: {
         marginBottom: theme.spacing(1),
         fontSize: '18px',
+        animation: '$fadeIn 0.4s ease forwards',
     },
     company: {
         color: theme.palette.secondary.main,
@@ -62,6 +112,18 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "'Poppins', sans-serif",
         fontSize: '14px',
         marginBottom: theme.spacing(2),
+        animation: '$slideIn 0.4s 0.2s forwards',
+        opacity: 0,
+    },
+    '@keyframes slideIn': {
+        '0%': {
+            opacity: 0,
+            transform: 'translateX(-10px)',
+        },
+        '100%': {
+            opacity: 1,
+            transform: 'translateX(0)',
+        },
     },
     responsibilities: {
         paddingLeft: 0,
@@ -71,6 +133,20 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         marginBottom: theme.spacing(2),
         fontSize: '15px',
+        opacity: 0,
+        animation: '$fadeInUp 0.5s forwards',
+        '&:nth-child(1)': {
+            animationDelay: '0.3s',
+        },
+        '&:nth-child(2)': {
+            animationDelay: '0.4s',
+        },
+        '&:nth-child(3)': {
+            animationDelay: '0.5s',
+        },
+        '&:nth-child(4)': {
+            animationDelay: '0.6s',
+        },
         '&:before': {
             content: '"▹"',
             color: theme.palette.secondary.main,
@@ -79,10 +155,21 @@ const useStyles = makeStyles((theme) => ({
             lineHeight: 2,
         },
     },
+    '@keyframes fadeInUp': {
+        '0%': {
+            opacity: 0,
+            transform: 'translateY(10px)',
+        },
+        '100%': {
+            opacity: 1,
+            transform: 'translateY(0)',
+        },
+    },
 }));
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
+    const classes = useStyles();
 
     return (
         <div
@@ -92,7 +179,11 @@ function TabPanel(props) {
             aria-labelledby={`vertical-tab-${index}`}
             {...other}
         >
-            {value === index && <Box>{children}</Box>}
+            {value === index && (
+                <Box className={classes.fadeIn}>
+                    {children}
+                </Box>
+            )}
         </div>
     );
 }
@@ -148,7 +239,7 @@ const Experience = () => {
     return (
         <section id="experience">
             <div className="section-header">
-                <span className="section-title">/ experience</span>
+                <span className="section-title"><span>/</span> experience</span>
             </div>
 
             <div className={classes.tabsContainer}>
