@@ -440,6 +440,19 @@ body {
     .link-number {
         font-size: 0.65rem;
     }
+
+    /* Disable background animations on mobile */
+    .bg-shapes {
+        display: none;
+    }
+
+    .grain-overlay {
+        display: none;
+    }
+
+    #particleCanvas {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {

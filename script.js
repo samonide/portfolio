@@ -162,8 +162,9 @@ class LinkEffects {
 
 const initApp = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-    if (!prefersReducedMotion) {
+    if (!prefersReducedMotion && !isMobile) {
         new ParticleSystem();
     }
 
